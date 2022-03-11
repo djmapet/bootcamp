@@ -7,7 +7,7 @@ print(us_news)
 
 marge = us_news.lower()
 import re
-result = re.sub(r"[^a-zA-Z]","",marge)
+result = re.sub(r"[^a-z]","",marge)
 
 for k in result:
     data[k] = result.count(k)
