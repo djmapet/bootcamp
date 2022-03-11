@@ -4,11 +4,12 @@ with open("news.txt","r") as open_news:
     us_news = open_news.read()
 
 print(us_news)
-blank = us_news.replace(" ","")
-marge = blank.lower()
 
-for k in marge:
-    data[k] = marge.count(k)
+import re
+result = re.sub(r"[^a-zA-Z]","",us_news)
+
+for k in result:
+    data[k] = result.count(k)
 
 
 k_sorted = sorted(data.items(), key=lambda x:x[1], reverse=True)
