@@ -6,7 +6,7 @@ with open("news.txt","r") as open_news:
 print(us_news)
 
 import re
-result = re.sub(r"[^a-zA-Z]","",us_news)
+result = re.sub(r"[^a-z]","",us_news)
 
 for k in result:
     data[k] = result.count(k)
