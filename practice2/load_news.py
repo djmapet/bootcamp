@@ -5,8 +5,9 @@ with open("news.txt","r") as open_news:
 
 print(us_news)
 
+marge = us_news.lower()
 import re
-result = re.sub(r"[^a-z]","",us_news)
+result = re.sub(r"[^a-zA-Z]","",marge)
 
 for k in result:
     data[k] = result.count(k)
@@ -15,7 +16,7 @@ for k in result:
 k_sorted = sorted(data.items(), key=lambda x:x[1], reverse=True)
 print(k_sorted)
 import re
-found = re.compile(r'[a-z]+')
+found = re.compile(r'[^a-z]+')
 
 
 
