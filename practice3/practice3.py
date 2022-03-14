@@ -9,12 +9,15 @@ print(practice_news)
 import re
 open = re.findall(r"[a-zA-Z]+",practice_news)
 
-for k in open:
-    data[k] = open.count(k)
+words = {}
+for word in practice_news.split():
+    words[word] = words.get(word, 0) +1
 
-k_sorted = sorted(data.items(), key=lambda x:x[1], reverse=True)
-print(k_sorted)
+count_words = [ (v,k) for k,v, in words.items()]
+count_words.sort()
+count_words.reverse()
 
+for count, word in count_words:
+    print (count,word)
 
-print(open)
 
