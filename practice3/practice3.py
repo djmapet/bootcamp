@@ -5,19 +5,20 @@ with open("practice3_news.txt","r") as open_text:
 
 print(practice_news)
 
+marge = practice_news.lower()
 
 import re
-open = re.findall(r"[a-zA-Z]+",practice_news)
+result = re.findall(r"[a-zA-Z]+",practice_news)
 
-words = {}
-for word in practice_news.split():
-    words[word] = words.get(word, 0) +1
+for k in result:
+    data[k] = result.count(k)
 
-count_words = [ (v,k) for k,v, in words.items()]
-count_words.sort()
-count_words.reverse()
 
-for count, word in count_words:
-    print (count,word)
+k_sorted = sorted(data.items(), key=lambda x:x[1], reverse=True)
+print(k_sorted)
+import re
+found = re.compile(r'[^a-zA-Z]+')
 
+print("一番使われている文字は'%s'で%d個使われています" %
+      (k_sorted[0][0],k_sorted[0][1] ))
 
