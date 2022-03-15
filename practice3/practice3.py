@@ -16,8 +16,6 @@ for k in result:
 
 k_sorted = sorted(data.items(), key=lambda x:x[1], reverse=True)
 print(k_sorted)
-import re
-found = re.compile(r'[^a-zA-Z]+')
 
 print("一番使われている文字は'%s'で%d個使われています" %
       (k_sorted[0][0],k_sorted[0][1] ))
