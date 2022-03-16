@@ -20,3 +20,4 @@ print(k_sorted)
 print("一番使われている文字は'%s'で%d個使われています" %
       (k_sorted[0][0],k_sorted[0][1] ))
 
+
