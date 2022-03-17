@@ -6,11 +6,7 @@ with open("oscar.csv","r") as open_text:
     print(header)
 
     for row in reader:
-        print(row)
-
-row_oscar = int(input('1991年と入力してください'))
-if row_oscar == 1991:
-    print("{}年はKathy Batesがオスカー賞を受賞しました".format(row_oscar))
+        print(row[1] =="1991" ,row[1], row[3])
 
 
 
