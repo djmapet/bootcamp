@@ -8,8 +8,7 @@ with open("oscar.csv","r") as open_text:
         if oscar[1] == "1991":
             oscar_1991 = oscar[3]
         if oscar[2] <= "30":
-            for u_30 in oscar[2]:
-                oscar_u30 = u_30
+            oscar_u30 = oscar[2]
 
 
     print("1991年のオスカー女優は%sです"
