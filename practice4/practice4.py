@@ -6,7 +6,14 @@ with open("oscar.csv","r") as open_text:
 
     for row in reader:
         if row[1] == "1991":
-            print(row[3])
+            print("1991年のオスカー女優は%sです"
+                  %(row[3]))
+        elif row[2] <= "30":
+            print("30歳以下のオスカー女優は%sです"
+                  %(row[3]))
+
+
+
 
 
 
