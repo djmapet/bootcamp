@@ -4,17 +4,18 @@ with open("oscar.csv","r") as open_text:
                         skipinitialspace=True)
     header = next(reader)
 
-    for row in reader:
-        if row[1] == "1991":
-            print("1991年のオスカー女優は%sです"
-                  %(row[3]))
-        elif row[2] <= "30":
-            print("30歳以下のオスカー女優は%sです"
-                  %(row[3]))
+    for oscar in reader:
+        if oscar[1] == "1991":
+            oscar_1991 = oscar[3]
+        if oscar[2] <= "30":
+            for u_30 in oscar[2]:
+                oscar_u30 = u_30
 
 
+    print("1991年のオスカー女優は%sです"
+          %(oscar_1991))
 
-
-
+    print("30歳以下のオスカー女優は%s名です"
+          %(oscar_u30))
 
 
