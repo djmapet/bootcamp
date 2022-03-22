@@ -1,3 +1,5 @@
+#coding: UTF-8
+import collections
 import csv
 with open("oscar.csv","r") as open_text:
     reader = csv.reader(open_text,delimiter="\t",doublequote=True, lineterminator="\r\n",quotechar='"',
@@ -8,7 +10,16 @@ with open("oscar.csv","r") as open_text:
         if oscar[1] == "1991":
             oscar_1991 = oscar[3]
         if oscar[2] <= "30":
-            oscar_u30 = oscar[2]
+            oscar_u30 = 0
+
+
+
+
+
+
+
+
+
 
 
     print("1991年のオスカー女優は%sです"
