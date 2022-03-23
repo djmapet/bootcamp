@@ -1,6 +1,7 @@
 #coding: UTF-8
 import collections
 import csv
+u30 = 0
 with open("oscar.csv","r") as open_text:
     reader = csv.reader(open_text,delimiter="\t",doublequote=True, lineterminator="\r\n",quotechar='"',
                         skipinitialspace=True)
@@ -10,15 +11,9 @@ with open("oscar.csv","r") as open_text:
         if oscar[1] == "1991":
             oscar_1991 = oscar[3]
         if oscar[2] <= "30":
-            oscar_u30 = 0
+            u30 += 1
 
-
-
-
-
-
-
-
+            print(u30)
 
 
 
@@ -26,6 +21,4 @@ with open("oscar.csv","r") as open_text:
           %(oscar_1991))
 
     print("30歳以下のオスカー女優は%s名です"
-          %(oscar_u30))
-
-
+          %(u30))
