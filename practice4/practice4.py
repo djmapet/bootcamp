@@ -13,10 +13,6 @@ with open("oscar.csv","r") as open_text:
         if oscar[2] <= "30":
             u30 += 1
 
-            print(u30)
-
-
-
     print("1991年のオスカー女優は%sです"
           %(oscar_1991))
 
