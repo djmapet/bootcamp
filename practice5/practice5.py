@@ -7,10 +7,13 @@ with open("titanic.csv","r") as open_text:
     header = next(reader)
 
     for titanic in reader:
-        if titanic[4] <= "20":
-            u20_woman.append(titanic[4])
-            survived_names = titanic[2]
+        if titanic[4] <= "20" and titanic[3] == "female" and titanic[0] =="1":
+            n = (titanic[4],titanic[2])
+            u20_woman.append(n)
 
-    for i, l in enumerate(u20_woman):
-        print("%s,%s" % (survived_names,l))
+
+    for l in u20_woman:
+        age = l[0]
+        name = l[1]
+        print("%s,%s" % (age,name))
 
