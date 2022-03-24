@@ -1,9 +1,8 @@
 #coding: UTF-8
-import collections
 import csv
-u30 = 0
+#u30 = 0
 u30_list = list()
-count = 0
+#count = 0
 with open("oscar.csv","r") as open_text:
     reader = csv.reader(open_text,delimiter="\t",doublequote=True, lineterminator="\r\n",quotechar='"',
                         skipinitialspace=True)
@@ -13,15 +12,9 @@ with open("oscar.csv","r") as open_text:
         if oscar[1] == "1991":
             oscar_1991 = oscar[3]
         if oscar[2] <= "30":
-            u30 += 1
+            #u30 += 1
             u30_list.append(oscar[3])
-
-
-
-
-
-
-
+"""
     print("1991年のオスカー女優は%sです"
           %(oscar_1991))
     print("30歳以下のオスカー女優は%s名です"
@@ -33,5 +26,8 @@ with open("oscar.csv","r") as open_text:
         names = l
 
         print("{0:d}".format(count),"{0:s}".format(names))
-
-
+"""
+print("1991年のオスカー女優は%sです" % oscar_1991)
+print("30歳以下のオスカー女優は%d名です" % len(u30_list))
+for i,l in enumerate(u30_list):
+    print("%d.%s" % (i+1,l))
