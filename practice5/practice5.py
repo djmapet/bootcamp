@@ -2,7 +2,7 @@
 import csv
 u20_woman = list()
 ave_count = list()
-count = 0
+#total = 0
 with open("titanic.csv","r") as open_text:
     reader = csv.reader(open_text,delimiter="\t",doublequote=True, lineterminator="\r\n",quotechar='"',
                         skipinitialspace=True)
@@ -13,10 +13,11 @@ with open("titanic.csv","r") as open_text:
             n = (titanic[4],titanic[2])
             u20_woman.append(n)
 
-        if titanic[0] == "1" and titanic[3] == "female" and titanic[3] == "male":
-            count +=1
-            life = (int(titanic[4])/sum(titanic[4]))
-            ave_count.append(life)
+        if titanic[0] == "1":
+            #total += 1
+            #life = (sum(titanic[4])/ave_count)
+            #total = ((titanic[4])+total)/int(titanic[4])
+            ave_count.append(titanic[4])
 
 
     for l in u20_woman:
@@ -24,9 +25,10 @@ with open("titanic.csv","r") as open_text:
         name = l[1]
         print("%s,%s" % (age,name))
 
-    for ave in ave_count:
-        ave_age = ave[0]
-        print("%s" % (ave_age))
+    for total,count in ave_count:
+        #ave_count = ave[1]
+        #ave_total = ave[0]
+        print("%s" % (total/count+1))
 
 
 
