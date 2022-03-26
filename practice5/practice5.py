@@ -28,7 +28,8 @@ with open("titanic.csv","r") as open_text:
     for total,count in ave_count:
         #ave_count = ave[1]
         #ave_total = ave[0]
-        print("%s" % (total/count+1))
+        age = ((int(total) + 1) / (int(count)))
+        print("%s" % age)
 
 
 
