@@ -1,6 +1,10 @@
 #coding: UTF-8
 import csv
 u20_woman = list()
+ave = list()
+total_age = 0
+count = 0
+
 with open("titanic.csv","r") as open_text:
     reader = csv.reader(open_text,delimiter="\t",doublequote=True, lineterminator="\r\n",quotechar='"',
                         skipinitialspace=True)
@@ -17,7 +21,18 @@ with open("titanic.csv","r") as open_text:
             except ValueError:
                 continue
 
+            total_age += age
+            count += 1
+            ave = total_age/count
+
+
+
+
+
 for l in u20_woman:
     age = l[0]
     name = l[1]
     print("%s,%s" % (age, name))
+
+print('生存者の平均年齢は%d歳です' %ave)
+
