@@ -23,14 +23,14 @@ with open("titanic.csv","r") as open_text:
             except ValueError:
                 continue
 
-        if titanic[0] == "1" and titanic[3] =="female":
+            if titanic[0] == "1" and titanic[3] =="female":
 
-            total_female_age += age
-            female_count += 1
+                total_female_age += age
+                female_count += 1
 
-        if titanic[0] == "1" and titanic[3] == "male":
-            total_male_age += age
-            male_count += 1
+            if titanic[0] == "1" and titanic[3] == "male":
+                total_male_age += age
+                male_count += 1
 
 female_ave = total_female_age/female_count
 male_ave = total_male_age/male_count
