@@ -17,16 +17,16 @@ with open("titanic.csv","r") as open_text:
             n = (titanic[4],titanic[2])
             u20_woman.append(n)
 
-        if titanic[0] == "1" and titanic[3] == "female":
+        if titanic[0] == "1":
             try:
                 female_age = int(titanic[4])
                 male_age = int(titanic[4])
             except ValueError:
                 continue
 
+        if titanic[0] == "1" and titanic[3] =="female":
             total_female_age += female_age
             female_count += 1
-
 
         if titanic[0] == "1" and titanic[3] == "male":
             total_male_age += male_age
@@ -40,6 +40,6 @@ for l in u20_woman:
     print("%s,%s" % (age, name))
 
 
-print('女性生存者の平均年齢は%d歳です' %female_ave )
-print('男性生存者の平均年齢は%d歳です' %male_ave )
+print('女性生存者の平均年齢は%s歳です' %female_ave )
+print('男性生存者の平均年齢は%s歳です' %male_ave )
 
