@@ -21,14 +21,18 @@ with open("titanic.csv","r") as open_text:
             try:
                 female_age = int(titanic[4])
                 male_age = int(titanic[4])
+                age = int(titanic[4])
             except ValueError:
                 continue
 
+
         if titanic[0] == "1" and titanic[3] =="female":
+            female_age += age
             total_female_age += female_age
             female_count += 1
 
         if titanic[0] == "1" and titanic[3] == "male":
+            male_age += age
             total_male_age += male_age
             male_count += 1
 
