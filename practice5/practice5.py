@@ -34,5 +34,5 @@ for l in u20_woman:
     name = l[1]
     print("%s,%s" % (age, name))
 
-print('生存者の平均年齢は%d歳です' %ave)
+print('生存者の平均年齢は','{:.1f}'.format(ave),'歳です' )
 
