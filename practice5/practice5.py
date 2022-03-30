@@ -7,6 +7,7 @@ total_male_age = 0
 female_count = 0
 male_count = 0
 max_age = 0
+minimu_age = 0
 
 with open("titanic.csv","r") as open_text:
     reader = csv.reader(open_text,delimiter="\t",doublequote=True, lineterminator="\r\n",quotechar='"',
@@ -34,7 +35,10 @@ with open("titanic.csv","r") as open_text:
 
             if age >= max_age :
                 max_age = age
-                print(max_age)
+
+            if age <= minimu_age:
+                minimu_age = age
+                print(minimu_age)
 
 female_ave = total_female_age/female_count
 male_ave = total_male_age/male_count
@@ -47,4 +51,5 @@ for l in u20_woman:
 print('女性生存者の平均年齢は%d歳です' %female_ave )
 print('男性生存者の平均年齢は%d歳です' %male_ave )
 print('生存者の最高年齢は%d歳です'%max_age)
+print('生存者の最小年齢は%d歳です'%minimu_age)
 
