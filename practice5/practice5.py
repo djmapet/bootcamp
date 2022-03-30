@@ -7,7 +7,8 @@ total_male_age = 0
 female_count = 0
 male_count = 0
 max_age = 0
-minimu_age = 0
+minimu_age = 10
+
 
 with open("titanic.csv","r") as open_text:
     reader = csv.reader(open_text,delimiter="\t",doublequote=True, lineterminator="\r\n",quotechar='"',
@@ -38,7 +39,6 @@ with open("titanic.csv","r") as open_text:
 
             if age <= minimu_age:
                 minimu_age = age
-                print(minimu_age)
 
 female_ave = total_female_age/female_count
 male_ave = total_male_age/male_count
