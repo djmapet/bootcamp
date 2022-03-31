@@ -7,7 +7,7 @@ total_male_age = 0
 female_count = 0
 male_count = 0
 max_age = 0
-minimu_age = 100
+minimu_age = 1000
 
 
 with open("titanic.csv","r") as open_text:
