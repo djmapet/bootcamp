@@ -1,7 +1,7 @@
 #coding: UTF-8
 import csv
 u20_woman = list()
-age = list()
+age_list = list()
 ave = list()
 total_female_age = 0
 total_male_age = 0
@@ -26,6 +26,8 @@ with open("titanic.csv","r") as open_text:
                 age = int(titanic[4])
             except ValueError:
                 continue
+            s = (titanic[4])
+            age_list.append(s)
 
             if titanic[3] =="female":
                 total_female_age += age
@@ -37,9 +39,11 @@ with open("titanic.csv","r") as open_text:
 
             if age >= max_age :
                 max_age = age
+                m = (titanic[4])
 
             if age <= minimu_age:
                 minimu_age = age
+                s = (titanic[4])
 
 
 female_ave = total_female_age/female_count
@@ -49,6 +53,8 @@ for l in u20_woman:
     name = l[1]
     print("%s,%s" % (age, name))
 
+for a in age_list:
+    list_ages = a[0]
 
 
 
@@ -56,6 +62,6 @@ print('女性生存者の平均年齢は%d歳です' %female_ave )
 print('男性生存者の平均年齢は%d歳です' %male_ave )
 print('生存者の最高年齢は%d歳です'%max_age)
 print('生存者の最小年齢は%d歳です'%minimu_age)
-print(max(age))
-print(min(age))
+print(max(list_ages))
+print(min(list_ages))
 
