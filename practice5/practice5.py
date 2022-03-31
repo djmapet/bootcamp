@@ -39,7 +39,6 @@ with open("titanic.csv","r") as open_text:
 
             if age <= minimu_age:
                 minimu_age = age
-                print(minimu_age)
 
 female_ave = total_female_age/female_count
 male_ave = total_male_age/male_count
