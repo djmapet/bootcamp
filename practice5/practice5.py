@@ -65,5 +65,5 @@ print('男性生存者の平均年齢は%d歳です' %male_ave )
 print('生存者の最高年齢は%d歳です'%max_age)
 print('生存者の最小年齢は%d歳です'%minimu_age)
 
-print(max(age_list))
-print(min(age_list))
+print('生存者の最高年齢は%d歳で%sです'%max(age_list))
+print('生存者の最高年齢は%d歳で%sです'%min(age_list))
