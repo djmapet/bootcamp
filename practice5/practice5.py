@@ -53,8 +53,7 @@ for l in u20_woman:
     name = l[1]
     print("%s,%s" % (age, name))
 
-for a in age_list:
-    age1 = age_list
+
 
 
 
@@ -63,5 +62,5 @@ print('女性生存者の平均年齢は%d歳です' %female_ave )
 print('男性生存者の平均年齢は%d歳です' %male_ave )
 print('生存者の最高年齢は%d歳です'%max_age)
 print('生存者の最小年齢は%d歳です'%minimu_age)
-print(max(age1))
-print(min(age1))
+
+print(max(age_list))
