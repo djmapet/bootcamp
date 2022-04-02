@@ -23,11 +23,10 @@ with open("titanic.csv","r") as open_text:
 
         if titanic[0] == "1":
             try:
-                age = int(titanic[4])
                 name = (titanic[2])
-                age_name = name,age
+                age = int(titanic[4])
+                age_name = (name,age)
                 age_list.append(age_name)
-
             except ValueError:
                 continue
 
@@ -62,5 +61,5 @@ print('男性生存者の平均年齢は%d歳です' %male_ave )
 print('生存者の最高年齢は%d歳です'%max_age)
 print('生存者の最小年齢は%d歳です'%minimu_age)
 
-print('生存者の最高年齢は%sの%d歳です'%max(age_list))
-print('生存者の最小年齢は%sの%d歳です'%min(age_list))
+print('生存者の最小年齢は%sの%d歳です' %min(age_list[0],age_list[1]))
+print('生存者の最高年齢は%sの%d歳です' %max(age_list[0],age_list[1]))
