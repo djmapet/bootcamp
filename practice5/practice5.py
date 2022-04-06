@@ -56,9 +56,13 @@ min_age_name = min(age_list)
 (age1, name1) = min_age_name
 max_age_name = max(age_list)
 (age2, name2) = max_age_name
+survived_500 = age_list
+list.sort(survived_500)
+just_100 = survived_500[100]
 print('女性生存者の平均年齢は%d歳です' % int(female_ave))
 print('男性生存者の平均年齢は%d歳です' % int(male_ave))
 print('生存者の最高年齢は%d歳です' % int(max_age))
 print('生存者の最小年齢は%d歳です' % (int(mini_age)))
 print('生存者の最小年齢は%sの%d歳です' % (name1, int(age1)))
 print('生存者の最高年齢は%sの%d歳です' % (name2, int(age2)))
+print(just_100)
