@@ -50,21 +50,21 @@ male_ave = total_male_age/male_count
 for woman in u20_woman:
     age = woman[0]
     name = woman[1]
-    print("%s,%s" % (age, name))
+    #print("%s,%s" % (age, name))
 
 min_age_name = min(age_list)
 (age1, name1) = min_age_name
 max_age_name = max(age_list)
 (age2, name2) = max_age_name
 
-list.sort(age_list)
+age_list.sort()
 (age3, name3) = age_list[-1]
 
 print('女性生存者の平均年齢は%d歳です' % int(female_ave))
 print('男性生存者の平均年齢は%d歳です' % int(male_ave))
-print('生存者の最高年齢は%d歳です' % int(max_age))
-print('生存者の最小年齢は%d歳です' % (int(mini_age)))
-print('生存者の最小年齢は%sの%d歳です' % (name1, int(age1)))
-print('生存者の最高年齢は%sの%d歳です' % (name2, int(age2)))
+print('生存者の最高年齢は%d歳です' % max_age)
+print('生存者の最小年齢は%d歳です' % mini_age)
+print('生存者の最小年齢は%sの%d歳です' % (name1, age1))
+print('生存者の最高年齢は%sの%d歳です' % (name2, age2))
 print("生存者は%d名です" % (len(age_list)))
-print("%d番目生存者の最高齢の名前と年齢は%sで%dです" % (len(age_list),name3, int(age3)))
+print("最高齢の生存者は%sで%dです" % (name3, age3))
