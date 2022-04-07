@@ -59,7 +59,7 @@ max_age_name = max(age_list)
 
 survived_number = age_list
 list.sort(survived_number)
-last_number = survived_number[333]
+last_number = survived_number[-1]
 (age3, name3) = last_number
 print('女性生存者の平均年齢は%d歳です' % int(female_ave))
 print('男性生存者の平均年齢は%d歳です' % int(male_ave))
