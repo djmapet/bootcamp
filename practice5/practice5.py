@@ -52,6 +52,7 @@ for woman in u20_woman:
     name = woman[1]
     #print("%s,%s" % (age, name))
 
+
 min_age_name = min(age_list)
 (age1, name1) = min_age_name
 max_age_name = max(age_list)
