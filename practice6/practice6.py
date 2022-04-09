@@ -39,9 +39,11 @@ with open("titanic.csv", "r") as open_text:
 
 #male_list.sort()
 #female_list.sort()
-oldest_female_age = max(female_list)
-oldest_male_age = max(male_list)
 
+oldest_male_age = max(male_list)
+(age1) = oldest_male_age
+oldest_female_age = max(female_list)
+(age2) = oldest_female_age
 
 print("男性乗客の最高年齢は%d歳です" % oldest_male_age)
 print("女性乗客の最高年齢は%d歳です" % oldest_female_age)
