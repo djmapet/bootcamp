@@ -20,7 +20,7 @@ with open("titanic.csv", "r") as open_text:
                 age_list.append(age_name)
             except ValueError:
                 continue
-            if titanic[3] == "male":
+            if  titanic[0] == "0" or titanic[0] == "1" and titanic[3] == "male":
                 try:
                     male_age = int(titanic[4])
                     male_name = (titanic[2])
@@ -28,7 +28,7 @@ with open("titanic.csv", "r") as open_text:
                     male_list.append(male_age_name)
                 except ValueError:
                     continue
-            if titanic[3] == "female":
+            if titanic[0] == "0" or titanic[0] == "1" and titanic[3] == "female" :
                 try:
                     female_age = int(titanic[4])
                     female_name = (titanic[2])
