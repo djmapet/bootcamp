@@ -12,30 +12,29 @@ with open("titanic.csv", "r") as open_text:
     header = next(reader)
 
     for titanic in reader:
-        if titanic[0] == "1" or titanic[0] == "0":
+        try:
+            age = int(titanic[4])
+            name = (titanic[2])
+            age_name = (age, name)
+            age_list.append(age_name)
+        except ValueError:
+            continue
+        if titanic[3] == "male":
             try:
-                age = int(titanic[4])
-                name = (titanic[2])
-                age_name = (age, name)
-                age_list.append(age_name)
+                male_age = int(titanic[4])
+                male_name = (titanic[2])
+                male_age_name = (male_age, male_name)
+                male_list.append(male_age_name)
             except ValueError:
                 continue
-            if titanic[3] == "male":
-                try:
-                    male_age = int(titanic[4])
-                    male_name = (titanic[2])
-                    male_age_name = (male_age, male_name)
-                    male_list.append(male_age_name)
-                except ValueError:
-                    continue
-            if titanic[3] == "female" :
-                try:
-                    female_age = int(titanic[4])
-                    female_name = (titanic[2])
-                    female_age_name = (female_age,female_name)
-                    female_list.append(female_age_name)
-                except ValueError:
-                    continue
+        if titanic[3] == "female":
+            try:
+                female_age = int(titanic[4])
+                female_name = (titanic[2])
+                female_age_name = (female_age,female_name)
+                female_list.append(female_age_name)
+            except ValueError:
+                continue
 
 #male_list.sort()
 #female_list.sort()
