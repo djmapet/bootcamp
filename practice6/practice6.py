@@ -12,33 +12,26 @@ with open("titanic.csv", "r") as open_text:
     header = next(reader)
 
     for titanic in reader:
-        try:
-            age = int(titanic[4])
-            name = (titanic[2])
-            age_name = (age, name)
-            age_list.append(age_name)
-        except ValueError:
-            continue
         if titanic[3] == "male":
             try:
-                male_age_name = (age, name)
-                male_list.append(male_age_name)
+                age = int(titanic[4])
+                male_list.append(age)
             except ValueError:
                 continue
         if titanic[3] == "female":
             try:
-                female_age_name = (age, name)
-                female_list.append(female_age_name)
+                age = int(titanic[4])
+                female_list.append(age)
             except ValueError:
                 continue
 
 #male_list.sort()
 #female_list.sort()
 
-(age1, name1) = max(male_list)
-oldest_male_age = age1
-(age2, name2) = max(female_list)
-oldest_female_age = age2
+(age) = max(male_list)
+oldest_male_age = age
+(age) = max(female_list)
+oldest_female_age = age
 
 print("男性乗客の最高年齢は%d歳です" % oldest_male_age)
 print("女性乗客の最高年齢は%d歳です" % oldest_female_age)
