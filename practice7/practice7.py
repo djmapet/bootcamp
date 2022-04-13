@@ -20,3 +20,19 @@ with open("titanic.csv", "r") as open_text:
         name = titanic[2]
         sex = titanic[3]
         passenger = (pclass, name, sex, age)
+        passenger_list.append(passenger)
+
+pclass1_list = list(filter(lambda x: x[0] == '1',
+                    passenger_list))
+pclass2_list = list(filter(lambda x: x[0] == '2',
+                    passenger_list))
+pclass3_list = list(filter(lambda x: x[0] == '3',
+                    passenger_list))
+pclass1_cnt = len(pclass1_list)
+pclass2_cnt = len(pclass2_list)
+pclass3_cnt = len(pclass3_list)
+
+
+print("1等級の乗客は%d名です" % pclass1_cnt)
+print("2等級の乗客は%d名です" % pclass2_cnt)
+print("3等級の乗客は%d名です" % pclass3_cnt)
