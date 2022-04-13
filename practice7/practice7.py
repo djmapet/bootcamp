@@ -26,7 +26,7 @@ pclass1_list = list(filter(lambda x: x[0] == '1',
                     passenger_list))
 pclass2_list = list(filter(lambda x: x[0] == '2',
                     passenger_list))
-pclass3_list = list(filter(lambda x: x[0] == '3',
+pclass3_list = list(filter(lambda x: x[0] == '3' and x[2] == "female" and x[3] >= 30,
                     passenger_list))
 pclass1_cnt = len(pclass1_list)
 pclass2_cnt = len(pclass2_list)
@@ -35,4 +35,5 @@ pclass3_cnt = len(pclass3_list)
 
 print("1等級の乗客は%d名です" % pclass1_cnt)
 print("2等級の乗客は%d名です" % pclass2_cnt)
-print("3等級の乗客は%d名です" % pclass3_cnt)
+#print("3等級の乗客は%d名です" % pclass3_cnt)
+print("3等級で30歳以上の女性は%d名です" % pclass3_cnt)
