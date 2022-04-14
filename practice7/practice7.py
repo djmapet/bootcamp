@@ -16,17 +16,18 @@ with open("titanic.csv", "r") as open_text:
         except ValueError:
             continue
 
+        survived = titanic[0]
         pclass = titanic[1]
         name = titanic[2]
         sex = titanic[3]
-        passenger = (pclass, name, sex, age)
+        passenger = (survived,pclass, name, sex, age)
         passenger_list.append(passenger)
 
-pclass1_list = list(filter(lambda x: x[0] == '1',
+pclass1_list = list(filter(lambda x: x[0] == '1' and x[1] == '1' ,
                     passenger_list))
-pclass2_list = list(filter(lambda x: x[0] == '2',
+pclass2_list = list(filter(lambda x: x[0] == '1' and x[1] == '2',
                     passenger_list))
-pclass3_list = list(filter(lambda x: x[0] == '3' and x[2] == "female" and x[3] >= 30,
+pclass3_list = list(filter(lambda x: x[0] == '1' and x[1] == '3' and x[3] == "female" and x[4] >= 30,
                     passenger_list))
 pclass1_cnt = len(pclass1_list)
 pclass2_cnt = len(pclass2_list)
