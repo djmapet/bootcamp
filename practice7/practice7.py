@@ -4,6 +4,9 @@
 #1,2,3等客の中で女性が多いのは等はどれか
 import csv
 passenger_list = list()
+most_female = list()
+total_class_list = list()
+all_class = list()
 male_cnt = 0
 total_male_age = 0
 female_cnt = 0
@@ -62,7 +65,7 @@ p3_alive = len(list(filter(lambda x: x[0] == '1', p3)))
 p3_alive_ave = p3_alive/p3_cnt*100
 print("3等客の生存率は%1.1fです" %p3_alive_ave)
 
-#1,2,3等客の中で女性が多いのは等はどれか
+"1,2,3等客の中で女性が多いのは等はどれか"
 many_female1 = list(filter(lambda x: x[3] == 'female', p1))
 many_female1_cnt = len(many_female1)
 print("1等客の女性は%d名です" %many_female1_cnt)
@@ -72,4 +75,19 @@ print("2等客の女性は%d名です" %many_female2_cnt)
 many_female3 = list(filter(lambda x: x[3] == 'female', p3))
 many_female3_cnt = len(many_female3)
 print("3等客の女性は%d名です" %many_female3_cnt)
-print('よって女性が多いのは3等客の%d名です' %many_female3_cnt)
+
+class_name = "1"
+female1_cnt = many_female1_cnt
+class1 = (class_name, female1_cnt)
+
+class_name = "2"
+female2_cnt = many_female2_cnt
+class2 = (class_name, female2_cnt)
+
+class_name = "3"
+female3_cnt = many_female3_cnt
+class3 = (class_name, female3_cnt)
+total_class = [class1, class2, class3]
+all_sort = sorted(total_class, key=lambda x: x[0], reverse=True)
+[class_total, many_female_cnt] = all_sort
+print('よって女性が多いのは%d等客の%d名です' %(class_total, many_female_cnt))
