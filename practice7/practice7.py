@@ -89,5 +89,5 @@ female3_cnt = many_female3_cnt
 class3 = (class_name, female3_cnt)
 total_class = [class1, class2, class3]
 all_sort = sorted(total_class, key=lambda x: x[1], reverse=True)
-[class_total, many_female_cnt] = max(all_sort)
-print('よって女性が多いのは%s等客の%d名です' %(class_total, many_female_cnt))
+total_class = all_sort[0]
+print('よって女性が多いのは%s等客の%d名です' %(total_class))
