@@ -90,4 +90,5 @@ class3 = (class_name, female3_cnt)
 total_class = [class1, class2, class3]
 all_sort = sorted(total_class, key=lambda x: x[1], reverse=True)
 total_class = all_sort[0]
-print('よって女性が多いのは%s等客の%d名です' %(total_class))
+(this_class, many_female_cnt) = total_class
+print('よって女性が多いのは%s等客の%d名です' %(this_class, many_female_cnt))
