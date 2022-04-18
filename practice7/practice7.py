@@ -76,19 +76,10 @@ many_female3 = list(filter(lambda x: x[3] == 'female', p3))
 many_female3_cnt = len(many_female3)
 print("3等客の女性は%d名です" %many_female3_cnt)
 
-class_name = "1"
-female1_cnt = many_female1_cnt
-class1 = (class_name, female1_cnt)
-
-class_name = "2"
-female2_cnt = many_female2_cnt
-class2 = (class_name, female2_cnt)
-
-class_name = "3"
-female3_cnt = many_female3_cnt
-class3 = (class_name, female3_cnt)
+class1 = ("1", many_female1_cnt)
+class2 = ("2", many_female2_cnt)
+class3 = ("3", many_female3_cnt)
 total_class = [class1, class2, class3]
 all_sort = sorted(total_class, key=lambda x: x[1], reverse=True)
-total_class = all_sort[0]
-(this_class, many_female_cnt) = total_class
+(this_class, many_female_cnt) = all_sort[0]
 print('よって女性が多いのは%s等客の%d名です' %(this_class, many_female_cnt))
