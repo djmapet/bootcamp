@@ -19,7 +19,8 @@ with open("olympic_tennis.csv", "r") as open_text:
 list_noc_medal = list(map(lambda x: (x[1], x[3],x[0],x[2]), player_list))
 list_medalist = list(filter(lambda x: (x[1] == 'Gold' or x[1] == 'Silver' or x[1] == 'Bronze') and x[2] == 'M' and x[3] == "Tennis Men's Singles", list_noc_medal))
 c = collections.Counter(list(map(lambda x: x[0], list_medalist)))
-c_sorted = sorted(c,key=lambda x: x,reverse=True)
+c_sorted = sorted(c.most_common(),key=lambda x: x[1],reverse=True)
 print(c)
 print(c_sorted)
-print("メダルを多く取ってる国は%sです"%(c_sorted[0]))
+(got_medal_noc, medal_cnt) = c_sorted[0]
+print("メダルを多く取ってる国は%sの%d個です"%(got_medal_noc,medal_cnt))
