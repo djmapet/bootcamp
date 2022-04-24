@@ -30,16 +30,25 @@ print("メダルを多く取ってる国は%sで%dです"%(noc, medals))
 
 tennis_player_list = list(map(lambda x: (x[3],x[0],x[4],x[5]), player_list))
 gold_tennis_player = list(filter(lambda x: x[0] == 'Gold' and (x[1] == 'F' or x[1] == 'M',x[3]) ,tennis_player_list))
-gold_list_m = list(filter(lambda x: x[1] == 'M' ,gold_tennis_player))
-gold_list_f = list(filter(lambda x: x[1] == 'F' ,gold_tennis_player))
-gold_list_m_young = list(filter(lambda x: x[3] ,gold_list_m))
-gold_list_m_young_sort = sorted(gold_list_m_young, key=lambda x:x[3] )
-gold_list_m_old = max(list(filter(lambda x: x[3] ,gold_list_m)))
-gold_list_f_young = min(list(filter(lambda x: x[3] ,gold_list_f)))
-gold_list_f_old = max(list(filter(lambda x: x[3] ,gold_list_f)))
+gold_list_m = list(filter(lambda x: x[1] =='M' and x[3] ,gold_tennis_player))
+gold_list_f = list(filter(lambda x: x[1] =='F' and x[3] ,gold_tennis_player))
+"""最年少と最高齢を出したい"""
+m_gold_young = list(map(lambda x: (x[2],x[3]),gold_list_m))
+m_gold_young_sort = sorted(m_gold_young, key=lambda x:x[1])
+(m_name_young,m_age_young) = m_gold_young_sort[0]
+m_gold_old = list(map(lambda x: (x[2],x[3]),gold_list_m))
+m_gold_old_sort = sorted(m_gold_old, key=lambda x:x[1],reverse=True)
+(m_name_old,m_age_old) = m_gold_old_sort[0]
+f_gold_young = list(map(lambda x: (x[2],x[3]),gold_list_f))
+f_gold_young_sort = sorted(f_gold_young, key=lambda x:x[1])
+(f_name_young,f_age_young) = f_gold_young_sort[0]
+f_gold_old = list(map(lambda x: (x[2],x[3]),gold_list_f))
+f_gold_old_sort = sorted(f_gold_old, key=lambda x: x[1],reverse=True)
+(f_name_old,f_age_old) = f_gold_old_sort[0]
 
-#print(gold_tennis_player)
-print(gold_list_m_young_sort)
-print(gold_list_m_old)
-print(gold_list_f_young)
-print(gold_list_f_old)
+print("男性の最年少で金メダルは%sの%s歳です" %(m_name_young,m_age_young))
+print("男性の最高齢で金メダルは%sの%s歳です" %(m_name_old,m_age_old))
+print("女性の最年少で金メダルは%sの%s歳です" %(f_name_young,f_age_young))
+print("女性の最高齢で金メダルは%sの%s歳です" %(f_name_old,f_age_old))
+
+
