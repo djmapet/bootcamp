@@ -51,4 +51,9 @@ print("男性の最高齢で金メダルは%sの%s歳です" %(m_name_old,m_age_
 print("女性の最年少で金メダルは%sの%s歳です" %(f_name_young,f_age_young))
 print("女性の最高齢で金メダルは%sの%s歳です" %(f_name_old,f_age_old))
 
-
+"""平均年齢"""
+age_list = list(map(lambda x: x[3],gold_tennis_player))
+age_sum = sum(age_list)
+age_cnt = len(age_list)
+age_ave = age_sum / age_cnt
+print("金メダル取得者の平均年齢は%1.1f歳です" %age_ave)
