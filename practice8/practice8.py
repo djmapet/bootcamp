@@ -53,3 +53,17 @@ age_sum = sum(age_list)
 age_cnt = len(age_list)
 age_ave = age_sum / age_cnt
 print("金メダル取得者の平均年齢は%1.1f歳です" %age_ave)
+
+"""一番メダルを取ったプレーヤー"""
+most_gold = collections.Counter(list(map(lambda x: x[2],gold_tennis_player)))
+m_f_got_gold = most_gold.most_common()
+(name1,cnt_medal) = m_f_got_gold[0]
+m_got_gold = collections.Counter(list(map(lambda  x: x[2],gold_list_m)))
+m_got_some_gold = m_got_gold.most_common()
+(m_name,m_cnt_medal) = m_got_some_gold[0]
+f_got_gold = collections.Counter(list(map(lambda  x: x[2],gold_list_f)))
+f_got_some_gold = f_got_gold.most_common()
+(f_name,f_cnt_medal) = f_got_some_gold[0]
+print("メダルを多く取ってる選手は%sの%d個です"%(name1,cnt_medal))
+print("男性でメダルを多く取ってる選手は%sの%d個です"%(m_name,m_cnt_medal))
+print("女性でメダルを多く取ってる選手は%sの%d個です"%(f_name,f_cnt_medal))
