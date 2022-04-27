@@ -55,9 +55,11 @@ age_ave = age_sum / age_cnt
 print("金メダル取得者の平均年齢は%1.1f歳です" %age_ave)
 
 """一番メダルを取ったプレーヤー"""
-most_medalist = collections.Counter(list(map(lambda x: (x[3]== "Gold" or x[3] == 'Silver' or x[3] == 'Bronze') ,player_list)))
+medalist = list(filter(lambda x: (x[3]== "Gold" or x[3] == 'Silver' or x[3] == 'Bronze') ,player_list))
+most_medalist = collections.Counter(list(map(lambda x:(x[0]== "Gold" or x[0] == 'Silver' or x[0] == 'Bronze'),medalist)))
 m_f_got_medal = most_medalist.most_common()
-(name1,cnt_medal) = m_f_got_medal[1]
+medal_sort = sorted(m_f_got_medal,key=lambda x:x[0],reverse=True)
+(name1,cnt_medal) = m_f_got_medal[0]
 m_got_medal = collections.Counter(list(map(lambda x: (x[3]== "Gold" or x[3] == 'Silver' or x[3] == 'Bronze') and x[0]== "M" ,player_list)))
 m_some_got_medal = m_got_medal.most_common()
 (m_name,m_cnt_medal) = m_some_got_medal[1]
