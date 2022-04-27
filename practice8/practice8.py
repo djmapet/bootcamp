@@ -56,16 +56,24 @@ print("金メダル取得者の平均年齢は%1.1f歳です" %age_ave)
 
 """一番メダルを取ったプレーヤー"""
 medalist = list(filter(lambda x: (x[3]== "Gold" or x[3] == 'Silver' or x[3] == 'Bronze') ,player_list))
-most_medalist = collections.Counter(list(map(lambda x:(x[0]== "Gold" or x[0] == 'Silver' or x[0] == 'Bronze'),medalist)))
+medalist_name_list = list(map(lambda x:x[3] and x[4],medalist))
+most_medalist = collections.Counter(medalist_name_list)
 m_f_got_medal = most_medalist.most_common()
 medal_sort = sorted(m_f_got_medal,key=lambda x:x[0],reverse=True)
 (name1,cnt_medal) = m_f_got_medal[0]
-m_got_medal = collections.Counter(list(map(lambda x: (x[3]== "Gold" or x[3] == 'Silver' or x[3] == 'Bronze') and x[0]== "M" ,player_list)))
-m_some_got_medal = m_got_medal.most_common()
-(m_name,m_cnt_medal) = m_some_got_medal[1]
-f_got_medal = collections.Counter(list(map(lambda x: (x[3]== "Gold" or x[3] == 'Silver' or x[3] == 'Bronze') and x[0]== "F" ,player_list)))
-f_some_got_medal = f_got_medal.most_common()
-(f_name,f_cnt_medal) = f_some_got_medal[1]
+
+m_medalist_name_list = list(map(lambda x:x[3] and x[0] == 'M' and x[4],medalist))
+m_some_got_medal = collections.Counter(m_medalist_name_list)
+m_got_medal_most = m_some_got_medal.most_common()
+m_medal_sort = sorted(m_got_medal_most,key=lambda x:x[1],reverse=True)
+(m_name,m_cnt_medal) = m_got_medal_most[1]
+
+f_medalist_name_list = list(map(lambda x:x[3] and x[0] == 'F' and x[4],medalist))
+f_some_got_medal = collections.Counter(f_medalist_name_list)
+f_got_medal_most = f_some_got_medal.most_common()
+f_medal_sort = sorted(f_got_medal_most,key=lambda x:x[1],reverse=True)
+(f_name,f_cnt_medal) = f_got_medal_most[1]
+
 print("メダルを多く取ってる選手は%sの%d個です"%(name1,cnt_medal))
 print("男性でメダルを多く取ってる選手は%sの%d個です"%(m_name,m_cnt_medal))
 print("女性でメダルを多く取ってる選手は%sの%d個です"%(f_name,f_cnt_medal))
