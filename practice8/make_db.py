@@ -14,6 +14,16 @@ with open("olympic_tennis.csv", "r") as open_text:
 
     rows = list()
     for row in reader:
+        try:
+            age = int(row[3])
+        except ValueError:
+            age = None
+        try:
+            year = int(row[9])
+        except ValueError:
+            year = None
+        row[3] = age
+        row[9] = year
         rows.append(row)
 
     cur.executemany(
