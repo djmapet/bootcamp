@@ -14,7 +14,7 @@ cur.execute(query)
 n = cur.fetchone()
 print("%d" % (n['max_age']))
 
-query = "select count(medal) as sum_medal , max(name) as medal_name from tennis where Medal = 'Gold' AND sex = 'M' group by medal "
+query = "select name as gold_name , count(medal) as sum_medal  from tennis where Medal = 'Gold' AND sex = 'M' group by name "
 cur.execute(query)
 m = cur.fetchone()
-print("%d %s" % (m['sum_medal'], m['medal_name']))
+print("%s %d" % (m['gold_name'], m['sum_medal']))
