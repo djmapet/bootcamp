@@ -12,9 +12,9 @@ cur = con.cursor()
 query = "select max(age) as max_age from tennis where Medal = 'Gold' AND sex = 'M' "
 cur.execute(query)
 n = cur.fetchone()
-print("%d" % (n['max_age']))
+print("メダルの個数は%d個です" % (n['max_age']))
 
 query = "select count(medal) as sum_medal ,name as gold_name from tennis where medal = 'Gold' and sex = 'M' group by gold_name order by sum_medal desc "
 cur.execute(query)
 m = cur.fetchone()
-print("%s %d" % (m['gold_name'], m['sum_medal']))
+print("メダルを多く取った人は%sの%s個です" % (m['gold_name'], m['sum_medal']))
