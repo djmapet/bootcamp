@@ -39,12 +39,17 @@ s = cur.fetchone()
 n = s['sum_medal']
 
 query = "select count(medal) as count_medal_cnt , noc as country from tennis where medal = 'Gold' group by country having count_medal_cnt = %s order by count_medal_cnt desc limit 1  " % n
-cur.execute(query)
-m = cur.fetchone()
-
 l1 = list()
 for result in cur.execute(query):
     l1.append(result['country'])
+    l1.append(result['count_medal_cnt'])
 
 print("金メダルを一番多く取った国は%sの%s個です" %(result['country'], result['count_medal_cnt']))
 
+"日本でメダルを何個取ったか"
+query = "select count(medal) as jpn_medal from tennis where medal ='Silver' and noc = 'JPN' group by noc order by jpn_medal desc limit 1"
+cur.execute(query)
+j1 = cur.fetchone()
+n2 = j1['jpn_medal']
+
+l2 = list()
