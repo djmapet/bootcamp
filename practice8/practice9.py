@@ -40,13 +40,13 @@ n = s['sum_medal']
 
 query = "select count(medal) as count_medal_cnt , noc as country from tennis where medal = 'Gold' group by country having count_medal_cnt = %d order by count_medal_cnt desc" % n
 l1 = list()
-for result in cur.execute(query):
+for result in cur.execute(l1):
     s2 = (result['country'],result['count_medal_cnt'])
     l1.append(s2)
 
 print("金メダルを一番多く取った国は%sの%sヵ国です" %s2)
 print('国は以下の通りです')
-for result2 in cur.execute(query):
+for result in cur.execute(l1):
     print("%s,%s" %s2)
 
 
