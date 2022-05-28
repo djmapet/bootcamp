@@ -32,7 +32,6 @@ for female2 in cur.execute(most_silver_player_list):
 print("男性でメダルを多く取った人は%sの%s個です" % (m['gold_name'], m['sum_medal']))
 
 "金メダルを一番多く取った国"
-
 query = "select count(medal) as sum_medal from tennis where medal = 'Gold' group by noc order by sum_medal desc "
 cur.execute(query)
 s = cur.fetchone()
@@ -40,14 +39,13 @@ n = s['sum_medal']
 
 query = "select count(medal) as count_medal_cnt , noc as country from tennis where medal = 'Gold' group by country having count_medal_cnt = %d order by count_medal_cnt desc" % n
 l1 = list()
-for result in cur.execute(l1):
+for result in cur.execute(query):
     s2 = (result['country'],result['count_medal_cnt'])
     l1.append(s2)
+    s3 = l1.count(s2)
 
-print("金メダルを一番多く取った国は%sの%sヵ国です" %s2)
-print('国は以下の通りです')
-for result in cur.execute(l1):
-    print("%s,%s" %s2)
+print("金メダルを一番多く取った国は%sで%dヵ国です" %(n,s3))
+
 
 
 
