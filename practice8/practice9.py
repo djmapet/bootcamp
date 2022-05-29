@@ -1,4 +1,5 @@
 # coding: UTF-8
+import collections
 import sqlite3
 
 con = sqlite3.connect("tennis.db")
@@ -43,9 +44,11 @@ for result in cur.execute(query):
     s2 = (result['country'],result['count_medal_cnt'])
     l1.append(s2)
 
-s3 = l1.count(s2)
+l1 = l1.count(s2)
 
-print("金メダルを一番多く取った国は%sで%dヵ国です" %(n,s3))
+
+
+print("金メダルを一番多く取った国は%sで%sヵ国です" %(n,l1))
 
 for result2 in  cur.execute(query):
     print("国は以下の通りです。")
