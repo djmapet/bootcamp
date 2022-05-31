@@ -46,8 +46,8 @@ for result in cur.execute(query):
 
 print("金メダルを一番多く取った国は%sで%sヵ国です" %(n,len(l1)))
 
-for l1 in  cur.execute(query):
-    print("国は以下の通りです。")
-    print("%s,%s" %s2)
+print("国は以下の通りです。")
+for x in l1:
+    print("%s" %x[1])
 
 
