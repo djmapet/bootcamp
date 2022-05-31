@@ -44,13 +44,9 @@ for result in cur.execute(query):
     s2 = (result['country'],result['count_medal_cnt'])
     l1.append(s2)
 
-l1 = l1.count(s2)
+print("金メダルを一番多く取った国は%sで%sヵ国です" %(n,len(l1)))
 
-
-
-print("金メダルを一番多く取った国は%sで%sヵ国です" %(n,l1))
-
-for result2 in  cur.execute(query):
+for l1 in  cur.execute(query):
     print("国は以下の通りです。")
     print("%s,%s" %s2)
 
