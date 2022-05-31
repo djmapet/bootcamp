@@ -48,6 +48,6 @@ print("金メダルを一番多く取った国は%sで%sヵ国です" %(n,len(l1
 
 print("国は以下の通りです。")
 for x in l1:
-    print("%s" %x[1])
+    print("%s" %x[0])
 
 
