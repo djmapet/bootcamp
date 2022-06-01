@@ -50,4 +50,20 @@ print("国は以下の通りです。")
 for x in l1:
     print("%s" %x[0])
 
+"金銀銅のどちらかを多く取った国"
+query = "select count(medal) as sum_medal2 from tennis where medal='Gold' or medal='Silver' or medal='Bronze' group by noc order by sum_medal2 desc"
+cur.execute(query)
+s3 = cur.fetchone()
+n2 = s3['sum_medal2']
 
+query = "select count(medal) as count_medal_cnt2 , noc as country2 from tennis where medal= 'Gold' or medal='Silver' or medal='Bronze' group by country2 having count_medal_cnt2 = %d order by count_medal_cnt2 " % n2
+l2 = list()
+for result in cur.execute(query):
+    s3 = (result['country2'], result['count_medal_cnt2'])
+    l2.append(s3)
+
+print("金銀銅メダルを一番多く取った国は%sで%sヵ国です" %(n2,len(l2)))
+
+print("国は以下の通りです")
+for x2 in l2:
+    print("%s" %x2[0])
