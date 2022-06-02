@@ -67,3 +67,31 @@ print("金銀銅メダルを一番多く取った国は%sで%sヵ国です" %(n2
 print("国は以下の通りです")
 for x2 in l2:
     print("%s" %x2[0])
+
+
+"30歳以下が獲得した金メダルの数"
+query = "select count(medal) as u30_medal from tennis where medal='Gold' group by age <= 30 order by u30_medal desc"
+cur.execute(query)
+s4 = cur.fetchone()
+u30_medal = s4['u30_medal']
+
+print('%s' %u30_medal)
+
+"男性の30歳以下が獲得した金メダルの数"
+query = "select count(medal) as u30_m_gold from tennis where medal='Gold' and sex = 'M' group by age <= 30 order by u30_m_gold desc"
+cur.execute(query)
+s5 = cur.fetchone()
+u30_medal_cnt = s5['u30_m_gold']
+
+query = "select name, sex, age, NOC, year,event, medal from tennis where sex = 'M' and medal = 'Gold' and age <= 30 order by year"
+u30_gold_m_list = list()
+cur.execute(query)
+for m1 in cur.execute(query):
+    u30_medal_m = (m1['name'],m1['sex'],m1['age'],m1['NOC'],m1['year'],m1['medal'],m1['event'])
+    u30_gold_m_list.append(u30_medal_m)
+
+print('男性の30歳以下が獲得した金メダルの数は%d個で、以下の通りになります'%u30_medal_cnt)
+for i, result2 in enumerate(u30_gold_m_list):
+    print(i+1, result2)
+
+"男性が最小年齢で獲得した金メダル"
