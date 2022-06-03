@@ -78,7 +78,7 @@ u30_medal = s4['u30_medal']
 print('%s' %u30_medal)
 
 "男性の30歳以下が獲得した金メダルの数"
-query = "select count(medal) as u30_m_gold from tennis where age <= 30 and medal = 'Gold' group by sex = 'M' order by u30_m_gold desc"
+query = "select count(medal) as u30_m_gold from tennis where (age <= 30 and medal = 'Gold') and sex = 'M' order by u30_m_gold desc"
 cur.execute(query)
 s5 = cur.fetchone()
 u30_medal_cnt = s5['u30_m_gold']
