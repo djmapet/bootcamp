@@ -74,11 +74,11 @@ def echo_dep(dep, time):
     return dep_time
 
 k_st = list()
-def get_station_id(st):
+def get_station_id(station_name):
     con = sqlite3.connect('keikyu.db')
     cur = con.cursor()
     query = "select st, id from stations where st "
-    slCode = st
+    slCode = station_name
     return (slCode)
 
 
