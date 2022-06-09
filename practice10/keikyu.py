@@ -88,21 +88,7 @@ def get_station_id(station_name):
     print("%s" % info)
 
 def get_url(st , dir, dw):
-    #return "https://norikae.keikyu.co.jp/transit/norikae/T5?dw="+dw+"&slCode="+st+"&d="+dir
-
-    #パラメータslCodeの作成
-    #参考：https://note.nkmk.me/python-csv-reader-writer/
-    with open('station_table.csv') as f:
-        reader = csv.reader(f)
-        l = [row for row in reader]
-    num = len(l)
-    for i in range(num):
-        if l[i][0]==st:#駅名で検索
-            slCode = l[i][1]
-    if i==l:
-        print("エラー：不明な駅名です．")
-        sys.exit(1)
-    #パラメータd,dwはそのまま
+    slCode = get_station_id(st)
     return "https://norikae.keikyu.co.jp/transit/norikae/T5?dw="+dw+"&slCode="+slCode+"&d="+dir
 
 if __name__ == '__main__':
