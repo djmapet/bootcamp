@@ -1,3 +1,5 @@
+import sqlite3
+
 from requests_html import HTMLSession #スクレイピング
 import datetime #現在時刻の取得
 import csv #csvファイルの読み込み
@@ -63,13 +65,27 @@ def echo_dep(dep, time):
         next=now_i+1
 
     #表示用リストの作成
-    for i in range(3):
+    for i in range(4):
         if next+i>=num:
             next = -1
             dep_time.append("〜終電〜")
         dep_time.append(str(dep[next+i][0]).zfill(2)+":"+str(dep[next+i][1]).zfill(2))
 
     return dep_time
+
+k_st = list()
+def get_station_id(st):
+    con = sqlite3.connect('keikyu.db')
+    cur = con.cursor()
+    query = "select st, id from stations where st "
+    slCode = st
+    return (slCode)
+
+
+
+    cur.execute(query)
+    info = cur.fetchone()
+    print("%s" % info)
 
 def get_url(st , dir, dw):
     #return "https://norikae.keikyu.co.jp/transit/norikae/T5?dw="+dw+"&slCode="+st+"&d="+dir
