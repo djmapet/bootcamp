@@ -77,8 +77,7 @@ k_st = list()
 def get_station_id(station_name):
     con = sqlite3.connect('keikyu.db')
     cur = con.cursor()
-    st = station_name
-    query = "select st, id from stations where st='%s' " %st
+    query = "select st, id from stations where st='%s'"%station_name
     cur.execute(query)
     info = cur.fetchone()
     return info[1]
