@@ -77,15 +77,11 @@ k_st = list()
 def get_station_id(station_name):
     con = sqlite3.connect('keikyu.db')
     cur = con.cursor()
-    query = "select st, id from stations where st "
-    slCode = station_name
-    return (slCode)
-
-
-
+    st = station_name
+    query = "select st, id from stations where st " %st
     cur.execute(query)
     info = cur.fetchone()
-    print("%s" % info)
+    return print("%s" % info[0])
 
 def get_url(st , dir, dw):
     slCode = get_station_id(st)
