@@ -81,7 +81,7 @@ def get_station_id(station_name):
     query = "select st, id from stations where st='%s' " %st
     cur.execute(query)
     info = cur.fetchone()
-    return print("%s" % info[0])
+    return info[1]
 
 def get_url(st , dir, dw):
     slCode = get_station_id(st)
