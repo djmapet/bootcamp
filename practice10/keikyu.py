@@ -84,14 +84,16 @@ def get_station_id(station_name):
     if info:
         return info[1]
     else:
-        print("指定の駅が見つかりませんでした")
         return None
 
 
 
 def get_url(st, dir, dw):
     slCode = get_station_id(st)
-    return "https://norikae.keikyu.co.jp/transit/norikae/T5?dw="+dw+"&slCode="+slCode+"&d="+dir
+    if not slCode == None:
+        return "https://norikae.keikyu.co.jp/transit/norikae/T5?dw=" + dw + "&slCode=" + slCode + "&d=" + dir
+    else:
+        return None
 
 
 if __name__ == '__main__':
@@ -103,6 +105,10 @@ if __name__ == '__main__':
     url = get_url(sys.argv[1], sys.argv[2], sys.argv[3])
     "print(url)"
     "①駅名（日本語），②上り:1，下り:2，③平日:0，土曜:1，休日:2"
+    if url == None:
+        print("指定された駅は見つかりませんでした")
+        sys.exit(1)
+
 
     "セッション開始"
     session = HTMLSession()
@@ -131,3 +137,5 @@ if __name__ == '__main__':
     [print(i) for i in dep_time]
 
     sys.exit(0)
+
+
