@@ -58,10 +58,10 @@ def echo_dep(dep, time):
     for i in range(num):#始発電車から１つずつ探していく．
         if dep[i][0] == time.hour:#現在時刻（時間）と比較
             now_i = i
+
             if dep[i][1] > time.minute:#現在時刻（分）と比較
                 next = i
                 break
-
     "分がHitしなかった場合の処理（時間を繰り上げ）"
     if next == 0:
         next = now_i+1
@@ -121,7 +121,12 @@ if __name__ == '__main__':
     info = get_info(sys.argv[1],r)
 
     "時刻表を取得"
+    st_name = sys.argv[1]
+    st_id = get_station_id(st_name)
     dep = get_timetable(r)
+    num = len(dep)
+    for i in range(num):
+        print("%s,%d,%d,%s,%s" % (st_id, dep[i][0], dep[i][1], sys.argv[2], sys.argv[3]))
 
     "現在時刻を取得"
     "参考URL：https://note.nkmk.me/python-datetime-now-today/"
