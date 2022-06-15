@@ -81,11 +81,18 @@ def get_station_id(station_name):
     query = "select st, id from stations where st='%s' " % station_name
     cur.execute(query)
     info = cur.fetchone()
-    return info[1]
+    if info:
+        return info[1]
+    else:
+        print("指定の駅が見つかりませんでした")
+        return None
+
+
 
 def get_url(st, dir, dw):
     slCode = get_station_id(st)
     return "https://norikae.keikyu.co.jp/transit/norikae/T5?dw="+dw+"&slCode="+slCode+"&d="+dir
+
 
 if __name__ == '__main__':
 
