@@ -84,3 +84,9 @@ if __name__ == '__main__':
     num = len(dep)
     for i in range(num):
         print("%s,%d,%d,%s,%s" % (st_id, dep[i][0], dep[i][1], sys.argv[2], sys.argv[3]))
+
+def make_csv(station_id,dir,dw):
+    with open('timetable.csv', 'r') as csv_file:
+        filednames = ['station_id', 'dir', 'dw']
+        writer = csv.DictWriter(csv_file, filednames)
+        csv_file.writelines(filednames)
