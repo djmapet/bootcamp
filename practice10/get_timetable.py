@@ -88,5 +88,7 @@ if __name__ == '__main__':
 def make_csv(station_id,dir,dw):
     with open('timetable.csv', 'r') as csv_file:
         filednames = ['station_id', 'dir', 'dw']
-        writer = csv.DictWriter(csv_file, filednames)
         csv_file.writelines(filednames)
+
+    with open('timetable.csv', 'r') as csv_file:
+        print(csv_file.read())
