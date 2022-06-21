@@ -35,6 +35,10 @@ def get_timetable(r):
         dep[i] = (train, minute_list[i])
     return dep
 
+    time_schedule = list()
+    time_schedule.append(r)
+
+
 def get_station_id(station_name):
     con = sqlite3.connect('keikyu.db')
     cur = con.cursor()
