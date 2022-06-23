@@ -5,7 +5,7 @@ import datetime #現在時刻の取得
 import csv #csvファイルの読み込み
 import sys #コマンドライン引数、プログラム終了
 
-def get_timetable(r):
+def parse_timetable(r):
 
     "時刻表（時間）を取得"
     hour = r.html.find(".side01")#平日
@@ -35,8 +35,26 @@ def get_timetable(r):
         dep[i] = (train, minute_list[i])
     return dep
 
-    time_schedule = list()
-    time_schedule.append(r)
+def get_timetable(station_name):
+    "セッション開始"
+    session = HTMLSession()
+
+    st_id = get_station_id(station_name)
+    time_table = list()
+    for dir in range(1,3):
+        for dw in range(0,3):
+            url = get_url(station_name, dir, dw)
+            r = session.get(url)
+
+            "ブラウザエンジンでHTMLを生成させる"
+            r.html.render()
+
+            dep = parse_timetable(r)
+            num = len(dep)
+            for i in range(num):
+                l = (st_id, dep[i][0], dep[i][1], dir, dw)
+                time_table.append(l)
+    return time_table
 
 
 def get_station_id(station_name):
@@ -55,44 +73,20 @@ def get_station_id(station_name):
 def get_url(st, dir, dw):
     slCode = get_station_id(st)
     if not slCode == None:
-        return "https://norikae.keikyu.co.jp/transit/norikae/T5?dw=" + dw + "&slCode=" + slCode + "&d=" + dir
+        return "https://norikae.keikyu.co.jp/transit/norikae/T5?slCode=%s&dw=%d&d=%d" % (slCode, dw, dir)
     else:
         return None
 
 
 if __name__ == '__main__':
 
-    if len(sys.argv) != 4:
-        print("次のコマンドライン引数を与えてください．\n１->駅名（日本語），２->上り:1，下り:2，３->平日:0，土曜:1，休日:2")
+    if len(sys.argv) == 2:
+        st_name = sys.argv[1]
+    else:
+        print("駅名を指定してください")
         sys.exit(1)
 
-    url = get_url(sys.argv[1], sys.argv[2], sys.argv[3])
-    "print(url)"
-    "①駅名（日本語），②上り:1，下り:2，③平日:0，土曜:1，休日:2"
-    if url == None:
-        print("指定された駅は見つかりませんでした")
-        sys.exit(1)
-
-
-    "セッション開始"
-    session = HTMLSession()
-    r = session.get(url)
-
-    "ブラウザエンジンでHTMLを生成させる"
-    r.html.render()
 
     "時刻表を取得"
-    st_name = sys.argv[1]
-    st_id = get_station_id(st_name)
-    dep = get_timetable(r)
-    num = len(dep)
-    for i in range(num):
-        print("%s,%d,%d,%s,%s" % (st_id, dep[i][0], dep[i][1], sys.argv[2], sys.argv[3]))
-
-def make_csv(station_id,dir,dw):
-    with open('timetable.csv', 'r') as csv_file:
-        filednames = ['station_id', 'dir', 'dw']
-        csv_file.writelines(filednames)
-
-    with open('timetable.csv', 'r') as csv_file:
-        print(csv_file.read())
+    t_tbl = get_timetable(st_name)
+    print(t_tbl)
