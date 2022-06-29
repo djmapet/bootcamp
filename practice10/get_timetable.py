@@ -16,7 +16,7 @@ def parse_timetable(r):
         hour_list.append(int(h.text))
     train = hour_list[0]#始発時間を取得
 
-    #時刻表（分）を取得
+    "時刻表（分）を取得"
     minute = r.html.find(".min1001")#普通列車のclass
     minute_list = []
     for m in minute:
@@ -77,6 +77,11 @@ def get_url(st, dir, dw):
     else:
         return None
 
+def make_csv(list, file_name):
+    add_list = make_csv(list,file_name)
+    with open('station_table.csv','w') as add_file:
+        writer = csv.writer(add_file)
+        writer.writerow(add_list)
 
 if __name__ == '__main__':
 
