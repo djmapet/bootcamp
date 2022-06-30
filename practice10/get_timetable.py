@@ -78,10 +78,12 @@ def get_url(st, dir, dw):
         return None
 
 def make_csv(list, file_name):
-    add_list = make_csv(list,file_name)
-    with open('station_table.csv','w') as add_file:
+    add_list = list(t_tbl)
+    with open(file_name) as add_file:
         writer = csv.writer(add_file)
         writer.writerow(add_list)
+    with open(file_name) as add_file:
+        print(add_file.read())
 
 if __name__ == '__main__':
 
