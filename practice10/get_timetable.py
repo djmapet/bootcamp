@@ -78,11 +78,12 @@ def get_url(st, dir, dw):
         return None
 
 def make_csv(list, file_name):
-    with open(file_name, 'timetable.csv') as add_file:
+    with open(file_name, 'w') as add_file:
         writer = csv.writer(add_file)
-        writer.writerow(get_timetable(list))
-    with open(file_name) as add_file:
-        print(add_file.read())
+        writer.writerow(list)
+    t_tbl = get_timetable(st_name)
+    print(t_tbl)
+    make_csv(t_tbl, 'timetable.csv')
 
 if __name__ == '__main__':
 
