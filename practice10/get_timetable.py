@@ -46,6 +46,7 @@ def get_timetable(station_name):
             url = get_url(station_name, dir, dw)
             r = session.get(url)
 
+
             "ブラウザエンジンでHTMLを生成させる"
             r.html.render()
 
@@ -54,8 +55,11 @@ def get_timetable(station_name):
             for i in range(num):
                 l = (st_id, dep[i][0], dep[i][1], dir, dw)
                 time_table.append(l)
-    return time_table
+                with open('timetable.csv', 'w') as f:
+                    writer = csv.writer(f)
+                    writer.writerow(l)
 
+    return time_table
 
 def get_station_id(station_name):
     con = sqlite3.connect('keikyu.db')
