@@ -55,9 +55,6 @@ def get_timetable(station_name):
             for i in range(num):
                 l = (st_id, dep[i][0], dep[i][1], dir, dw)
                 time_table.append(l)
-                with open('timetable.csv', 'w') as f:
-                    writer = csv.writer(f)
-                    writer.writerow(l)
 
     return time_table
 
@@ -84,7 +81,7 @@ def get_url(st, dir, dw):
 def make_csv(list, file_name):
     with open(file_name, 'w') as add_file:
         writer = csv.writer(add_file)
-        writer.writerow(list)
+        writer.writerows(list)
 
 if __name__ == '__main__':
 
