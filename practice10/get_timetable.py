@@ -35,13 +35,19 @@ def parse_timetable(r):
         dep[i] = (train, minute_list[i])
     return dep
 
+def get_station_names(stations):
+    "sqlを追加"
+    con = sqlite3.connect("stations.db")
+    cur = con.cursor()
+    query = "select st from stations " % stations
+    cur.execute(query)
+    n = cur.fetchone()
+    print(n)
+
+
 def get_timetable(station_name):
     "セッション開始"
     session = HTMLSession()
-    "sqlを追加"
-    con = sqlite3.connect("stations.db")
-    con.row_factory = sqlite3.Row
-    cur = con.cursor()
 
     st_id = get_station_id(station_name)
     time_table = list()
@@ -59,9 +65,7 @@ def get_timetable(station_name):
             for i in range(num):
                 l = (st_id, dep[i][0], dep[i][1], dir, dw)
                 time_table.append(l)
-                query = "select st_id where station_name"
-                cur.execute(query)
-                n = cur.fetchone()
+
 
     return time_table
 
