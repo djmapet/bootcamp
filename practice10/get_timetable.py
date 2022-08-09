@@ -42,7 +42,7 @@ def get_station_names(stations):
     query = "select st from stations " % stations
     cur.execute(query)
     n = cur.fetchone()
-    print(n)
+    return list
 
 
 def get_timetable(station_name):
