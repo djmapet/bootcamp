@@ -35,14 +35,15 @@ def parse_timetable(r):
         dep[i] = (train, minute_list[i])
     return dep
 
-def get_station_names(stations):
+def get_station_names():
     "sqlを追加"
-    con = sqlite3.connect("stations.db")
+    con = sqlite3.connect("keikyu.db")
     cur = con.cursor()
-    query = "select st from stations " % stations
-    cur.execute(query)
-    n = cur.fetchone()
-    return list
+    query = "select st from stations"
+    names = list()
+    for n in cur.execute(query):
+        names.append(n[0])
+    return names
 
 
 def get_timetable(station_name):
@@ -102,8 +103,10 @@ if __name__ == '__main__':
         print("駅名を指定してください")
         sys.exit(1)
 
+    stations = get_station_names()
+    for name in stations:
+        print(name)
 
     "時刻表を取得"
     t_tbl = get_timetable(st_name)
-    print(t_tbl)
     make_csv(t_tbl, 'timetable.csv')
