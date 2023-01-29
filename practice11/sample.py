@@ -15,20 +15,23 @@ with open("ohtani_pitch_2022.csv", "r") as open_text:
 for n in n_list:
     print("%s,%d" % (n[0],n[1]))
 
-def get_speed_ave(speed_ave):
+def get_speed_ave():
     con =sqlite3.connect('sample.db')
     cur = con.cursor()
     query = "select avg(release_speed) from sample desc"
     cur.execute(query)
-    average = cur.fetchone()
-    print("大谷の平均急速は%1.1f mlです") %(average)
+    info = cur.fetchone()
+    if info:
+        return info[0]
+    else:
+        return None
+
 
 
 
 if __name__ == '__main__':
-    get_speed_ave()
-    #for n2 in get_speed_ave():
-     #   print("大谷選手の平均の球速は%1.1f mlです" % float(n2))
+    print("大谷の球速平均スピードは%s mphです"%round(get_speed_ave(),1))
+
 
 
 
