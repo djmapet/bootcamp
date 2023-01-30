@@ -31,7 +31,7 @@ def get_speed_ave():
 
 if __name__ == '__main__':
     ohtani_speed_ave_sth = get_speed_ave()
-    print("大谷の球速平均スピードは%s mphです"%round(ohtani_speed_ave_sth,1))
+    print("大谷の球速平均スピードは%s mphです"%ohtani_speed_ave_sth)
 
 
 
