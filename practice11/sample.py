@@ -26,14 +26,24 @@ def get_speed_ave():
     else:
         return None
 
-
+def pitching_count():
+    con = sqlite3.connect('sample.db')
+    cur = con.cursor()
+    query = 'select count(pitch_name) from sample desc'
+    cur.execute(query)
+    info = cur.fetchone()
+    if info:
+        return info
+    else:
+        return None
 
 
 if __name__ == '__main__':
     ohtani_speed_ave_sth = get_speed_ave()
-    print("大谷の球速平均スピードは%s mphです"%ohtani_speed_ave_sth)
+    print("大谷の球速平均スピードは%smphです"%ohtani_speed_ave_sth)
 
-
+    ohtani_pitching_total = pitching_count()
+    print("大谷の2022シーズンの球数は%s球です"%ohtani_pitching_total)
 
 
 
