@@ -9,14 +9,10 @@ with open("ohtani_pitch_2022.csv", "r") as open_text:
 
     for data in reader:
         speed = float(data[2])
-        if speed >= 80:
+        if speed >= 100:
             n_list.append([data[1],speed])
 
 
-    for pitch in reader:
-        pitch_type = float(pitch[23])
-        if true :
-            print(pitch_type)
 
 for n in n_list:
     print("%s,%d" % (n[0],n[1]))
