@@ -36,3 +36,4 @@ with open("ECサンプルデータ - sales.csv", "r") as open_text:
     con.commit()
 
 
+
