@@ -9,7 +9,6 @@ with open("ECサンプルデータ - sales.csv", "r") as open_text:
                         skipinitialspace=True)
     header = next(reader)
 
-
 def sales_month():
     con = sqlite3.connect("sample.db")
     cur = con.cursor()
