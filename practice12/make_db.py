@@ -2,7 +2,7 @@
 import csv
 import sqlite3
 
-with open("ECサンプルデータ - sales.csv", "r") as open_text :
+with open("sales.csv", "r"), open("users.csv","r"), open("items.csv") as open_text :
     render = csv.reader(open_text, delimiter=",", doublequote=True, lineterminator="\r\n", quotechar='"',
                     skipinitialspace=True)
     header = next(render)
@@ -10,18 +10,18 @@ with open("ECサンプルデータ - sales.csv", "r") as open_text :
 element = ",".join(header)
 element_cnt = len(header)
 
-scheme = "sample("+element.replace('"','')+")"
+scheme = "practice12("+element.replace('"','')+")"
 
 l_element = list()
 for n in header:
     l_element.append("?")
 s_element = ",".join(l_element)
 
-con = sqlite3.connect("sample.db")
+con = sqlite3.connect("practice12.db")
 cur = con.cursor()
 query = "CREATE TABLE IF NOT EXISTS "+scheme
 cur.execute(query)
-with open("ECサンプルデータ - sales.csv", "r") as open_text:
+with open("sales.csv", "r"), open("users.csv","r"), open("items.csv") as open_text:
     reader = csv.reader(open_text, doublequote=True, lineterminator="\r\n",
                         quotechar='"', skipinitialspace=True)
     header = next(reader)
@@ -34,6 +34,4 @@ with open("ECサンプルデータ - sales.csv", "r") as open_text:
     print(n_query)
     cur.executemany(n_query, rows)
     con.commit()
-
-
 
